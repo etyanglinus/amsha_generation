@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './About.module.css'; // Make sure the CSS file exists
+import styles from './About.module.css'; // Ensure this file exists
 
 const teamMembers = [
   {
@@ -62,14 +62,14 @@ const About = () => {
         <div className={`bg-royalblue text-white rounded-lg p-8 mb-8 ${styles.statementContainer}`}>
           <h2 className="text-3xl font-bold text-center mb-4">Vision Statement</h2>
           <p className="text-lg text-center">
-            "To build a financially secure future for every young adult in Kenya, empowering generations through smart savings and financial literacy."
+            &quot;To build a financially secure future for every young adult in Kenya, empowering generations through smart savings and financial literacy.&quot;
           </p>
         </div>
 
         <div className={`bg-royalblue text-white rounded-lg p-8 ${styles.statementContainer}`}>
           <h2 className="text-3xl font-bold text-center mb-4">Mission Statement</h2>
           <p className="text-lg text-center">
-            "Amsha Generation is dedicated to enabling students to start saving early, providing them with the tools and financial knowledge necessary to create a stable and prosperous future as they transition from education to their professional lives."
+            &quot;Amsha Generation is dedicated to enabling students to start saving early, providing them with the tools and financial knowledge necessary to create a stable and prosperous future as they transition from education to their professional lives.&quot;
           </p>
         </div>
       </section>
