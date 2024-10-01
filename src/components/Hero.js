@@ -1,6 +1,8 @@
-"use client";  
+"use client";
 
 import { useState, useEffect } from "react";
+import Image from 'next/image'; // Import Image component from Next.js
+import Link from 'next/link'; // Import Link component
 import styles from './../styles/Hero.module.css';
 
 const Hero = () => {
@@ -42,24 +44,28 @@ const Hero = () => {
           <h1 className="text-4xl font-bold mb-4 text-royal-blue">
             Empowering Students to Save for a Secure Financial Future
           </h1>
-          <button className="bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition">
-            Get Started
-          </button>
+          <Link href="/get-started">
+            <a className="bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition">
+              Get Started
+            </a>
+          </Link>
         </div>
 
         {/* Right Side: Success Stories Slideshow */}
         <div className="slideshow w-1/2">
           <div className="success-story text-center">
-            <img
+            <Image
               src={successStories[currentStory].image}
               alt={successStories[currentStory].name}
               className="rounded-full w-24 h-24 mx-auto mb-4"
+              width={96}
+              height={96}
             />
             <p className="text-lg font-semibold">
               {successStories[currentStory].name}
             </p>
             <p className="text-gray-500 italic">
-              "{successStories[currentStory].caption}"
+              &quot;{successStories[currentStory].caption}&quot;
             </p>
           </div>
         </div>
