@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image'; // Import Next.js Image component
 
 const BlogPost = ({ title, content, initialLikes, image }) => {
   const [likes, setLikes] = useState(initialLikes);
@@ -27,7 +28,7 @@ const BlogPost = ({ title, content, initialLikes, image }) => {
 
   return (
     <div className="blog-post">
-      {image && <img src={image} alt={title} />}
+      {image && <Image src={image} alt={title} width={600} height={400} />} {/* Replaced <img> with <Image> */}
       <h2>{title}</h2>
       <p>{content}</p>
       <div className="blog-actions">
