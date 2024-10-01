@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  height: 100vh; /* Full height */
+}
+
+.sidebar {
+  width: 250px; /* Fixed width */
+  background-color: royalblue; /* Sidebar color */
+  color: white; /* Text color */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.content {
+  flex-grow: 1; /* Allow content to grow and take up space */
+  padding: 20px;
+  background-color: white; /* Content background color */
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: transparent; /* Transparent button */
+  color: white; /* Button text color */
+  border: 1px solid white; /* White border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Padding inside the button */
+  cursor: pointer; /* Pointer cursor on hover */
+}

@@ -1,0 +1,14 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjust as needed */
+    background: linear-gradient(to left, white, royalblue);
+    padding: 20px; /* Optional padding */
+  }
+  
+  .content {
+    max-width: 800px; 
+    text-align: center;
+  }
+  

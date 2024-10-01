@@ -1,0 +1,125 @@
+
+.features {
+    padding: 40px;
+    background-color: royalblue; /* Royal blue background */
+    color: white; /* White text */
+    text-align: center;
+    border-radius: 15px;
+    margin: 20px 0;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+  }
+  
+  /* Features grid styling */
+  .featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px;
+  }
+  
+  .featureCard {
+    background-color: white;
+    color: royalblue;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .featureImage {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .featureTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .featureDescription {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* How It Works Section */
+  .howItWorks {
+    margin-top: 60px;
+    padding: 40px 0;
+    background-color: #ffffff; /* White background */
+    color: royalblue; /* Text color */
+    text-align: center;
+    border-radius: 15px;
+  }
+  
+  .stepsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .stepCard {
+    padding: 20px;
+    background-color: royalblue;
+    color: white;
+    border-radius: 10px;
+  }
+  
+  .stepTitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .stepDescription {
+    font-size: 1rem;
+  }
+  
+  /* Partners Section */
+  .partnersSection {
+    margin-top: 60px;
+    padding: 40px 0;
+    background-color: royalblue;
+    text-align: center;
+  }
+  
+  .partnersGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .partnerCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: royalblue;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .partnerLogo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .partnerName {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  

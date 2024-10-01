@@ -1,0 +1,121 @@
+/* Contact.module.css */
+
+.contactContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: royalblue;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.introText {
+  font-size: 1.125rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: black;
+}
+
+/* Contact Form */
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputField,
+.textArea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.inputField:focus,
+.textArea:focus {
+  outline: none;
+  border-color: royalblue;
+}
+
+.textArea {
+  height: 150px;
+  resize: none;
+}
+
+.submitButton {
+  padding: 12px;
+  background-color: royalblue;
+  color: white;
+  font-size: 1.125rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: darkblue;
+}
+
+/* Thank You Message */
+.thankYouMessage {
+  text-align: center;
+  color: royalblue;
+}
+
+.thankYouMessage h2 {
+  font-size: 1.75rem;
+  margin-bottom: 10px;
+}
+
+.thankYouMessage p {
+  font-size: 1.125rem;
+}
+
+/* Support Section */
+.supportSection {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.supportLink {
+  color: royalblue;
+  text-decoration: underline;
+}
+
+.supportLink:hover {
+  color: darkblue;
+}
+
+/* Office Info Section */
+.officeInfo {
+  margin-top: 40px;
+}
+
+.officeInfo h2 {
+  font-size: 1.75rem;
+  color: royalblue;
+  margin-bottom: 10px;
+}
+
+.officeInfo p {
+  font-size: 1.125rem;
+  color: black;
+}
+
+.officeHours {
+  list-style: none;
+  padding: 0;
+}
+
+.officeHours li {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
