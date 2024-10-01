@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image'; // Example of how to include Next.js Image
 
 const SignUpForm = () => {
   const [credentials, setCredentials] = useState({
@@ -10,6 +11,7 @@ const SignUpForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false); // New state for submission
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,8 +38,11 @@ const SignUpForm = () => {
       setErrors(validationErrors);
     } else {
       setErrors({});
+      setIsSubmitting(true); // Start submitting
       console.log(credentials);
-      // Handle registration logic
+      // Simulating async registration logic
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      setIsSubmitting(false); // End submitting
       // After successful registration, redirect to dashboard or show success message
     }
   };
@@ -47,57 +52,84 @@ const SignUpForm = () => {
       <div className="signup-form">
         <h1>Create an Account</h1>
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="fullName"
-            value={credentials.fullName}
-            onChange={handleChange}
-            placeholder="Full Name"
-            required
-          />
-          {errors.fullName && <p className="error">{errors.fullName}</p>}
+          <div>
+            <label htmlFor="fullName">Full Name</label>
+            <input
+              type="text"
+              name="fullName"
+              id="fullName"
+              value={credentials.fullName}
+              onChange={handleChange}
+              placeholder="Full Name"
+              required
+              className={errors.fullName ? 'error-input' : ''}
+            />
+            {errors.fullName && <p className="error">{errors.fullName}</p>}
+          </div>
 
-          <input
-            type="email"
-            name="email"
-            value={credentials.email}
-            onChange={handleChange}
-            placeholder="Email"
-            required
-          />
-          {errors.email && <p className="error">{errors.email}</p>}
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={credentials.email}
+              onChange={handleChange}
+              placeholder="Email"
+              required
+              className={errors.email ? 'error-input' : ''}
+            />
+            {errors.email && <p className="error">{errors.email}</p>}
+          </div>
 
-          <input
-            type="password"
-            name="password"
-            value={credentials.password}
-            onChange={handleChange}
-            placeholder="Password"
-            required
-          />
-          {errors.password && <p className="error">{errors.password}</p>}
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={credentials.password}
+              onChange={handleChange}
+              placeholder="Password"
+              required
+              className={errors.password ? 'error-input' : ''}
+            />
+            {errors.password && <p className="error">{errors.password}</p>}
+          </div>
 
-          <input
-            type="tel"
-            name="phone"
-            value={credentials.phone}
-            onChange={handleChange}
-            placeholder="Phone Number (for M-Pesa)"
-            required
-          />
-          {errors.phone && <p className="error">{errors.phone}</p>}
+          <div>
+            <label htmlFor="phone">Phone Number (for M-Pesa)</label>
+            <input
+              type="tel"
+              name="phone"
+              id="phone"
+              value={credentials.phone}
+              onChange={handleChange}
+              placeholder="Phone Number"
+              required
+              className={errors.phone ? 'error-input' : ''}
+            />
+            {errors.phone && <p className="error">{errors.phone}</p>}
+          </div>
 
-          <input
-            type="text"
-            name="university"
-            value={credentials.university}
-            onChange={handleChange}
-            placeholder="University"
-            required
-          />
-          {errors.university && <p className="error">{errors.university}</p>}
+          <div>
+            <label htmlFor="university">University</label>
+            <input
+              type="text"
+              name="university"
+              id="university"
+              value={credentials.university}
+              onChange={handleChange}
+              placeholder="University"
+              required
+              className={errors.university ? 'error-input' : ''}
+            />
+            {errors.university && <p className="error">{errors.university}</p>}
+          </div>
 
-          <button type="submit">Create Account</button>
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Creating Account...' : 'Create Account'}
+          </button>
           <p>
             Already have an account? <a href="/login">Login here</a>
           </p>
@@ -175,6 +207,10 @@ const SignUpForm = () => {
 
         a:hover {
           text-decoration: underline;
+        }
+
+        .error-input {
+          border-color: red;
         }
       `}</style>
     </div>
