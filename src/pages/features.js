@@ -1,28 +1,29 @@
 import React from 'react';
+import Image from 'next/image'; // Importing Image component from next/image
 import styles from '../styles/Features.module.css';
 
 const featuresData = [
   {
     title: 'Savings Plans',
     description: 'Tailored savings plans to meet every student’s needs.',
-    visual: '/path/to/savings-plan-image.jpg', // Replace with the actual path to your visual demo
+    visual: '/path/to/savings-plan-image.jpg',
   },
   {
     title: 'Budgeting Tools',
     description: 'Tools to help students manage their finances effectively.',
-    visual: '/path/to/budgeting-tools-image.jpg', // Replace with the actual path to your visual demo
+    visual: '/path/to/budgeting-tools-image.jpg',
   },
   {
     title: 'Education Workshops',
     description: 'Workshops designed to educate students on financial literacy.',
-    visual: '/path/to/workshops-image.jpg', // Replace with the actual path to your visual demo
+    visual: '/path/to/workshops-image.jpg',
   },
 ];
 
 const partnersData = [
   {
     name: 'Partner 1',
-    logo: '/path/to/partner1-logo.jpg', // Replace with the actual path to your partner logo
+    logo: '/path/to/partner1-logo.jpg',
   },
   {
     name: 'Partner 2',
@@ -54,13 +55,13 @@ const Features = () => {
     <div className={styles.features}>
       <h1 className={styles.title}>Features</h1>
       <p className={styles.description}>
-        Explore our platform's key features designed to help students save and budget efficiently.
+        Explore our platform&#39;s key features designed to help students save and budget efficiently.
       </p>
 
       <div className={styles.featuresGrid}>
         {featuresData.map((feature, index) => (
           <div key={index} className={styles.featureCard}>
-            <img src={feature.visual} alt={feature.title} className={styles.featureImage} />
+            <Image src={feature.visual} alt={feature.title} className={styles.featureImage} width={500} height={300} />
             <h3 className={styles.featureTitle}>{feature.title}</h3>
             <p className={styles.featureDescription}>{feature.description}</p>
           </div>
@@ -86,7 +87,7 @@ const Features = () => {
         <div className={styles.partnersGrid}>
           {partnersData.map((partner, index) => (
             <div key={index} className={styles.partnerCard}>
-              <img src={partner.logo} alt={partner.name} className={styles.partnerLogo} />
+              <Image src={partner.logo} alt={partner.name} className={styles.partnerLogo} width={200} height={100} />
               <p className={styles.partnerName}>{partner.name}</p>
             </div>
           ))}
