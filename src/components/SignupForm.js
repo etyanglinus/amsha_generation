@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link'; // Import Next.js Link for navigation
 import Image from 'next/image'; // Example of how to include Next.js Image
 
 const SignUpForm = () => {
@@ -51,7 +52,7 @@ const SignUpForm = () => {
     <div className="signup-container">
       <div className="signup-form">
         <h1>Create an Account</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <div>
             <label htmlFor="fullName">Full Name</label>
             <input
@@ -63,8 +64,10 @@ const SignUpForm = () => {
               placeholder="Full Name"
               required
               className={errors.fullName ? 'error-input' : ''}
+              aria-describedby={errors.fullName ? 'fullNameError' : null}
+              disabled={isSubmitting}
             />
-            {errors.fullName && <p className="error">{errors.fullName}</p>}
+            {errors.fullName && <p id="fullNameError" className="error">{errors.fullName}</p>}
           </div>
 
           <div>
@@ -78,8 +81,10 @@ const SignUpForm = () => {
               placeholder="Email"
               required
               className={errors.email ? 'error-input' : ''}
+              aria-describedby={errors.email ? 'emailError' : null}
+              disabled={isSubmitting}
             />
-            {errors.email && <p className="error">{errors.email}</p>}
+            {errors.email && <p id="emailError" className="error">{errors.email}</p>}
           </div>
 
           <div>
@@ -93,8 +98,10 @@ const SignUpForm = () => {
               placeholder="Password"
               required
               className={errors.password ? 'error-input' : ''}
+              aria-describedby={errors.password ? 'passwordError' : null}
+              disabled={isSubmitting}
             />
-            {errors.password && <p className="error">{errors.password}</p>}
+            {errors.password && <p id="passwordError" className="error">{errors.password}</p>}
           </div>
 
           <div>
@@ -108,8 +115,10 @@ const SignUpForm = () => {
               placeholder="Phone Number"
               required
               className={errors.phone ? 'error-input' : ''}
+              aria-describedby={errors.phone ? 'phoneError' : null}
+              disabled={isSubmitting}
             />
-            {errors.phone && <p className="error">{errors.phone}</p>}
+            {errors.phone && <p id="phoneError" className="error">{errors.phone}</p>}
           </div>
 
           <div>
@@ -123,15 +132,17 @@ const SignUpForm = () => {
               placeholder="University"
               required
               className={errors.university ? 'error-input' : ''}
+              aria-describedby={errors.university ? 'universityError' : null}
+              disabled={isSubmitting}
             />
-            {errors.university && <p className="error">{errors.university}</p>}
+            {errors.university && <p id="universityError" className="error">{errors.university}</p>}
           </div>
 
           <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Creating Account...' : 'Create Account'}
           </button>
           <p>
-            Already have an account? <a href="/login">Login here</a>
+            Already have an account? <Link href="/login"><a>Login here</a></Link>
           </p>
         </form>
       </div>
@@ -192,6 +203,11 @@ const SignUpForm = () => {
 
         button:hover {
           background-color: #005bb5;
+        }
+
+        button:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
         }
 
         p {
