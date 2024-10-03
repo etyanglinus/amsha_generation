@@ -1,58 +1,34 @@
 import DashboardLayout from '../../components/DashboardLayout';
 import { useState } from 'react';
-import { Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale } from 'chart.js';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
 
 const BudgetingTools = () => {
-  // State to manage the budget and expenses
-  const [budget, setBudget] = useState({
-    Housing: 1000,
-    Food: 500,
-    Transportation: 300,
-    Entertainment: 200,
-  });
-
   const [expenses, setExpenses] = useState({
-    Housing: 800,
-    Food: 400,
-    Transportation: 250,
-    Entertainment: 180,
+    housing: 0,
+    food: 0,
+    transportation: 0,
+    entertainment: 0,
   });
 
-  const handleExpenseInput = (category, value) => {
-    setExpenses((prev) => ({
-      ...prev,
-      [category]: value,
-    }));
+  const handleExpenseChange = (category, value) => {
+    setExpenses({ ...expenses, [category]: value });
   };
 
-  // Calculate total spending and budget
-  const totalBudget = Object.values(budget).reduce((acc, val) => acc + val, 0);
-  const totalSpent = Object.values(expenses).reduce((acc, val) => acc + val, 0);
-
-  // Data for Spending Insights (Pie Chart)
-  const spendingData = {
-    labels: Object.keys(expenses),
+  const categories = ['housing', 'food', 'transportation', 'entertainment'];
+  
+  // Pie chart data
+  const chartData = {
+    labels: categories,
     datasets: [
       {
-        data: Object.values(expenses),
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50'],
+        label: 'Spending by Category',
+        data: categories.map(category => expenses[category]),
+        backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0'],
       },
     ],
-  };
-
-  // Function to check if the user is approaching budget limits
-  const checkBudgetAlert = (category) => {
-    if (expenses[category] >= budget[category] * 0.8) {
-      return '⚠️ Approaching Budget';
-    }
-    if (expenses[category] >= budget[category]) {
-      return '❌ Exceeded Budget';
-    }
-    return '';
   };
 
   return (
@@ -60,50 +36,53 @@ const BudgetingTools = () => {
       <div className="budgeting-tools">
         <h2>Budgeting Tools</h2>
 
-        {/* Monthly Budget Overview */}
-        <section className="monthly-budget">
+        <section className="monthly-budget-overview">
           <h3>Monthly Budget Overview</h3>
-          <div className="budget-grid">
-            {Object.keys(budget).map((category, index) => (
-              <div key={index} className="budget-item">
-                <h4>{category}</h4>
-                <p>Budget: ${budget[category]}</p>
-                <p>Spent: ${expenses[category]}</p>
-                <p>{checkBudgetAlert(category)}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Expense Tracker */}
-        <section className="expense-tracker">
-          <h3>Expense Tracker</h3>
-          <form>
-            {Object.keys(expenses).map((category, index) => (
-              <div key={index} className="form-group">
-                <label>{category}:</label>
+          <div className="category-inputs">
+            {categories.map((category) => (
+              <div key={category} className="category-input">
+                <label>{category.charAt(0).toUpperCase() + category.slice(1)}</label>
                 <input
                   type="number"
                   value={expenses[category]}
-                  onChange={(e) => handleExpenseInput(category, parseInt(e.target.value, 10))}
+                  onChange={(e) => handleExpenseChange(category, parseFloat(e.target.value))}
+                  placeholder={`Enter ${category} budget`}
                 />
               </div>
             ))}
-          </form>
-        </section>
-
-        {/* Spending Insights (Pie Chart) */}
-        <section className="spending-insights">
-          <h3>Spending Insights</h3>
-          <div className="chart-container">
-            <Doughnut data={spendingData} width={100} height={100} />
           </div>
         </section>
 
-        {/* Recommended Actions */}
+        <section className="expense-tracker">
+          <h3>Expense Tracker</h3>
+          <form>
+            <div className="input-group">
+              <label>Expense Name</label>
+              <input type="text" placeholder="Expense description" />
+            </div>
+            <div className="input-group">
+              <label>Amount</label>
+              <input type="number" placeholder="Amount" />
+            </div>
+            <button type="submit">Add Expense</button>
+          </form>
+        </section>
+
+        <section className="spending-insights">
+          <h3>Spending Insights</h3>
+          <div className="chart-container">
+            <Pie data={chartData} options={{ responsive: true }} />
+          </div>
+        </section>
+
+        <section className="budget-alerts">
+          <h3>Budget Alerts</h3>
+          <p>If you&apos;re exceeding your budget in any category, consider adjusting your spending habits or reallocating funds to fit your budget better.</p>
+        </section>
+
         <section className="recommended-actions">
           <h3>Recommended Actions</h3>
-          <p>If you're exceeding your budget in any category, consider adjusting your spending habits or reallocating funds to fit your budget better.</p>
+          <p>If you&apos;re exceeding your budget in any category, consider adjusting your spending habits or reallocating funds to fit your budget better.</p>
         </section>
       </div>
 
@@ -119,66 +98,80 @@ const BudgetingTools = () => {
           margin-bottom: 20px;
         }
 
-        section {
-          margin-bottom: 30px;
-        }
-
-        .monthly-budget h3,
-        .expense-tracker h3,
-        .spending-insights h3,
-        .recommended-actions h3 {
-          margin-bottom: 10px;
-        }
-
-        .budget-grid {
+        .category-inputs {
           display: grid;
-          grid-template-columns: repeat(4, 1fr); /* 4 columns */
+          grid-template-columns: 1fr 1fr;
           gap: 20px;
         }
 
-        .budget-item {
-          background-color: #f9f9f9;
-          padding: 15px;
-          border-radius: 8px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-          text-align: center;
+        .category-input label {
+          font-size: 16px;
         }
 
-        .budget-item h4 {
-          margin-bottom: 10px;
-        }
-
-        .expense-tracker .form-group {
-          margin-bottom: 10px;
-        }
-
-        .expense-tracker .form-group label {
-          display: block;
-          margin-bottom: 5px;
-        }
-
-        .expense-tracker .form-group input {
+        .category-input input {
+          padding: 10px;
+          font-size: 14px;
           width: 100%;
-          padding: 8px;
-          border: 1px solid #ddd;
-          border-radius: 4px;
+          margin-top: 5px;
         }
 
-        .spending-insights .chart-container {
-          width: 200px;
-          height: 200px;
-          margin: 0 auto;
+        .input-group {
+          margin-bottom: 10px;
         }
 
+        .input-group label {
+          font-size: 16px;
+        }
+
+        .input-group input {
+          padding: 10px;
+          font-size: 14px;
+          width: 100%;
+          margin-top: 5px;
+        }
+
+        button {
+          padding: 10px 20px;
+          font-size: 16px;
+          background-color: #4caf50;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        button:hover {
+          background-color: #45a049;
+        }
+
+        .chart-container {
+          width: 300px;
+          height: 300px;
+          margin-top: 20px;
+        }
+
+        .spending-insights,
+        .budget-alerts,
+        .recommended-actions {
+          margin-top: 40px;
+        }
+
+        .spending-insights h3,
+        .budget-alerts h3,
+        .recommended-actions h3 {
+          font-size: 20px;
+          margin-bottom: 15px;
+        }
+
+        /* Responsive design */
         @media (max-width: 768px) {
-          .budget-grid {
-            grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+          .category-inputs {
+            grid-template-columns: 1fr; /* Single column for small screens */
           }
-        }
 
-        @media (max-width: 480px) {
-          .budget-grid {
-            grid-template-columns: 1fr; /* 1 column for very small screens */
+          .chart-container {
+            width: 250px;
+            height: 250px;
           }
         }
       `}</style>
