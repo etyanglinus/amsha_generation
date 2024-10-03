@@ -1,12 +1,23 @@
 import React from 'react';
 import DashboardLayout from '../../components/DashboardLayout';
-import { Line, Bar } from 'react-chartjs-2';
+import { Line, Bar, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
-import { FaBell } from 'react-icons/fa'; // Bell icon for notifications
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
 const HomePage = () => {
+  // Dynamic Greeting Based on Time of Day
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good Morning';
+    if (hour < 18) return 'Good Afternoon';
+    return 'Good Evening';
+  };
+
+  const userName = 'Alex'; // You can get this dynamically from user data
+  
+  const greeting = `${getGreeting()}, ${userName}!`;
+
   // Savings Over Time (Bar Chart) Data
   const savingsData = {
     labels: ['January', 'February', 'March', 'April', 'May'],
@@ -37,16 +48,12 @@ const HomePage = () => {
       <div className="home-page">
         <header className="header">
           <div className="greeting">
-            <h1>Good Morning, Alex!</h1>
+            <h1>{greeting}</h1>
             <img src="/path-to-avatar.jpg" alt="User Avatar" className="avatar" />
           </div>
           <div className="balance">
             <h2>Account Balance</h2>
             <p>Ksh 200,000</p>
-          </div>
-          <div className="notification-icon">
-            <FaBell size={24} color="#2196F3" />
-            <span className="notification-count">3</span>
           </div>
         </header>
 
@@ -74,7 +81,7 @@ const HomePage = () => {
 
           <div className="chart-container">
             <h3>Spending by Category</h3>
-            <Line data={spendingData} />
+            <Pie data={spendingData} />
           </div>
         </section>
 
@@ -118,21 +125,6 @@ const HomePage = () => {
             font-size: 24px;
             color: #4CAF50;
             font-weight: bold;
-          }
-
-          .notification-icon {
-            position: relative;
-          }
-
-          .notification-icon .notification-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: red;
-            color: white;
-            border-radius: 50%;
-            padding: 5px;
-            font-size: 12px;
           }
 
           .quick-actions {
