@@ -11,8 +11,9 @@ body {
   background-color: #f4f4f4;
   color: #333;
   line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Global Links */
@@ -103,32 +104,25 @@ a:focus {
   color: white;
   text-align: center;
   padding: 20px 0;
-  margin-top: 20px;
+  margin-top: auto;
 }
 
 .footer a {
   color: #4169E1; /* Link color */
   text-decoration: none;
+  margin: 0 10px;
 }
 
 .footer a:hover {
   text-decoration: underline;
 }
 
-/* Container Styling */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* Centered Form Styling */
+/* Centered Form Styling (Login/Signup) */
 .centered-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  flex: 1;
   padding: 20px;
 }
 
@@ -138,10 +132,9 @@ a:focus {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 400px; /* Limit form width */
 }
 
-/* Form Input Fields */
 input,
 textarea,
 select,
@@ -154,12 +147,21 @@ button {
   font-size: 16px;
 }
 
+/* Glowing Effect for Input Fields */
 input:focus,
 textarea:focus,
 select:focus,
 button:focus {
   outline: none;
   border-color: #4169E1;
+  box-shadow: 0 0 10px rgba(65, 105, 225, 0.5); /* Glowing effect */
+}
+
+/* Glowing Input Fields */
+input,
+textarea,
+select {
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 button {
@@ -204,6 +206,17 @@ button:hover {
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+/* Footer Links Horizontal Styling */
+.footer ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.footer ul li {
+  margin: 0 15px;
 }
 
 /* Responsive Design for Different Screens */
