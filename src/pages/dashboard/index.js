@@ -1,3 +1,6 @@
+import DashboardLayout from '../../components/DashboardLayout';
+import { FaBell } from 'react-icons/fa'; // Font Awesome Bell icon
+import Link from 'next/link';
 import { useState } from 'react';
 import DashboardLayout from '../../components/DashboardLayout';
 import { Bar, Doughnut } from 'react-chartjs-2';
@@ -50,195 +53,123 @@ const DashboardIndex = () => {
 
   // Savings Over Time (Bar Chart) Data
   const savingsData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-    datasets: [
-      {
-        label: 'Savings Over Time ($)',
-        data: [150, 200, 250, 300, 400, 500],
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Savings Overview',
-      },
-    },
-  };
-
-  // Maturity Date Example
-  const maturityDate = '2025-12-31'; // Example maturity date
-
+    labels: ['January', 'February', 'March', 'April', '
+const HomePage = () => {
   return (
     <DashboardLayout>
-      <div className="overview">
-        {/* Header: Welcome Message */}
-        <h2>Welcome back, [Username]!</h2>
-
-        {/* Current Balance and Goal Progress */}
-        <div className="balance">
-          <h3>Current Balance: ${currentBalance}</h3>
-          <div className="progress">
-            <h4>Goal Progress: {goalProgress}%</h4>
-            <div className="progress-bar">
-              <div className="progress-fill" style={{ width: `${goalProgress}%` }}></div>
-            </div>
-          </div>
+      <div className="home-page">
+        {/* Notification Icon */}
+        <div className="notification-icon">
+          <FaBell size={24} />
         </div>
 
-        {/* Quick Actions */}
-        <div className="quick-actions">
-          <button className="action-btn" onClick={() => setIsModalOpen(true)}>Deposit Funds</button>
-          <button className="action-btn">Create Savings Plan</button>
-          <button className="action-btn">Refer a Friend</button>
-          <button className="action-btn">Check Rewards</button>
-        </div>
+        <h1>Welcome to Your Dashboard</h1>
 
-        {/* Charts: Savings by Category and Goal Progress */}
-        <div className="charts-container">
-          <div className="chart-section">
-            <h3>Savings by Category</h3>
-            <Doughnut data={categoryData} />
+        <section className="financial-education-tools">
+          <h2>Financial Education Tools</h2>
+          <div className="workshops-webinars">
+            <h3>Workshops and Webinars</h3>
+            <ul>
+              <li>
+                <h4>Savings and Investment Strategies</h4>
+                <p>Join our next webinar on effective savings and investment strategies.</p>
+                <button>Join Now</button>
+              </li>
+              <li>
+                <h4>Budgeting 101</h4>
+                <p>Learn the basics of budgeting in our recorded session.</p>
+                <button>Watch Recording</button>
+              </li>
+            </ul>
           </div>
-          <div className="chart-section">
-            <h3>Savings Goal Progress</h3>
-            <Doughnut data={goalProgressData} />
+          <div className="articles-guides">
+            <h3>Articles and Guides</h3>
+            <ul>
+              <li><Link href="#">How to Save Money Effectively</Link></li>
+              <li><Link href="#">Investment Tips for Beginners</Link></li>
+              <li><Link href="#">Understanding Budgeting Tools</Link></li>
+            </ul>
           </div>
-          <div className="chart-section">
-            <h3>Savings Over Time</h3>
-            <Bar data={savingsData} options={options} />
-          </div>
-        </div>
+        </section>
 
-        {/* Maturity Date */}
-        <div className="maturity-section">
-          <h3>Maturity Date</h3>
-          <p>{maturityDate}</p>
-        </div>
+        {/* Other sections go here */}
 
-        {/* Recent Transactions */}
-        <div className="recent-transactions">
-          <h4>Recent Transactions</h4>
-          <div className="transactions-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Description</th>
-                  <th>Amount ($)</th>
-                  <th>Date</th>
-                  <th>Mode of Payment</th>
-                </tr>
-              </thead>
-              <tbody>
-                {recentTransactions.map(transaction => (
-                  <tr key={transaction.id}>
-                    <td>{transaction.description}</td>
-                    <td>{transaction.amount}</td>
-                    <td>{transaction.date}</td>
-                    <td>{transaction.mode}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <style jsx>{`
+          .home-page {
+            padding: 20px;
+          }
 
-        {/* Deposit Modal */}
-        <DepositModal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} />
+          h1 {
+            color: #333;
+          }
+
+          section {
+            margin-bottom: 30px;
+          }
+
+          h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #4CAF50;
+          }
+
+          h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+          }
+
+          button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+
+          button:hover {
+            background-color: #45a049;
+          }
+
+          ul {
+            list-style: none;
+            padding-left: 0;
+          }
+
+          li {
+            margin-bottom: 15px;
+          }
+
+          a {
+            color: #007bff;
+            text-decoration: none;
+          }
+
+          a:hover {
+            text-decoration: underline;
+          }
+
+          /* Notification Icon Styles */
+          .notification-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #f44336; /* Red color for notifications */
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+          }
+
+          .notification-icon:hover {
+            background-color: #d32f2f;
+          }
+        `}</style>
       </div>
-
-      {/* Styles */}
-      <style jsx>{`
-        .overview {
-          padding: 20px;
-          background-color: white;
-          border-radius: 8px;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2, h3, h4 {
-          color: #333;
-        }
-
-        .balance, .quick-actions, .charts-container, .maturity-section, .recent-transactions {
-          margin-bottom: 20px;
-        }
-
-        .progress-bar {
-          background-color: #e0e0e0;
-          height: 20px;
-          border-radius: 5px;
-          margin-top: 10px;
-          overflow: hidden;
-        }
-
-        .progress-fill {
-          background-color: #4caf50;
-          height: 100%;
-        }
-
-        .quick-actions {
-          display: flex;
-          justify-content: space-between;
-        }
-
-        .action-btn {
-          background-color: #0070f3;
-          color: white;
-          padding: 10px 20px;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-
-        .action-btn:hover {
-          background-color: #005bb5;
-        }
-
-        .charts-container {
-          display: flex;
-          justify-content: space-between;
-        }
-
-        .chart-section {
-          flex: 1;
-          margin: 0 10px;
-        }
-
-        .transactions-table {
-          margin-top: 10px;
-        }
-
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-
-        th, td {
-          padding: 8px;
-          border-bottom: 1px solid #ddd;
-        }
-
-        th {
-          background-color: #0070f3;
-          color: white;
-        }
-
-        tr:hover {
-          background-color: #f1f1f1;
-        }
-      `}</style>
     </DashboardLayout>
   );
 };
 
-export default DashboardIndex;
+export default HomePage;
