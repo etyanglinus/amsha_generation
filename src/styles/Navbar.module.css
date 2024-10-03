@@ -1,79 +1,80 @@
 .navbar {
-    position: sticky;
-    top: 0;
-    background-color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-  }
-  
+  position: sticky;
+  top: 0;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+ul {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center; /* Align the links to the center */
+  width: 100%; /* Ensure the links span the entire width */
+}
+
+ul li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #4a4a4a;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #6366f1; /* Change to blue on hover */
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #ff7f50, #1e40af); /* Orange to Blue gradient */
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, #1e40af, #ff7f50); /* Reverse gradient on hover */
+}
+
+.btn-secondary {
+  border: 2px solid #1e40af; /* Blue border */
+  color: #1e40af;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #1e40af; /* Blue background */
+  color: white;
+}
+
+/* Mobile Menu Styling */
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
   ul {
-    display: flex;
-    gap: 1.5rem;
-  }
-  
-  ul li {
-    list-style: none;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #4a4a4a;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  a:hover {
-    color: #6366f1;
-  }
-  
-  .btn-primary {
-    background: linear-gradient(to right, #6366f1, #4f46e5);
-    color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: background 0.3s ease;
-  }
-  
-  .btn-primary:hover {
-    background: linear-gradient(to right, #4f46e5, #3b82f6);
-  }
-  
-  .btn-secondary {
-    border: 2px solid #6366f1;
-    color: #6366f1;
-    padding: 0.5rem 1.5rem;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: color 0.3s ease, background-color 0.3s ease;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #6366f1;
-    color: white;
-  }
-  
-  /* Mobile Menu Styling */
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  @media (max-width: 768px) {
-    ul {
-      display: none; /* Hide the menu on mobile */
-    }
-  
-    button {
-      display: block; /* Show the mobile menu toggle button */
-    }
+    display: none; /* Hide the menu on mobile */
   }
 
+  button {
+    display: block; /* Show the mobile menu toggle button */
+  }
+}

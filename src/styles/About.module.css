@@ -1,58 +1,49 @@
 .about {
-  padding: 2rem;
-  background: linear-gradient(to right, #f0f0f0, #ffffff); /* Subtle background gradient */
+  padding: 20px;
 }
 
 .teamSection {
-  margin-top: 2rem;
+  margin-top: 40px;
 }
 
 .teamCards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .teamCard {
-  transition: transform 0.2s ease-in-out;
-  background-color: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  max-width: 300px;
   text-align: center;
-}
-
-.teamCard:hover {
-  transform: scale(1.05);
 }
 
 .teamImage {
-  border: 2px solid #4169e1; /* Royal blue border */
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
-  margin-bottom: 1rem;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.bio {
+  margin-top: 10px;
+  color: #555;
+}
+
+/* Value Proposition Styling */
+.valueProposition {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
 }
 
 .statementContainer {
-  background-color: #4169e1; /* Royal blue */
-  color: white;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  text-align: center;
-}
-
-
-
-.bio {
-  color: #555; /* Dark grey for bio text */
-}
-
-.text-blue-500 {
-  color: #4169e1; /* Royal blue for LinkedIn links */
-}
-
-.text-center {
+  margin-bottom: 40px;
   text-align: center;
 }

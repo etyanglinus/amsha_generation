@@ -8,9 +8,9 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         {/* Logo */}
         <div className="flex items-center space-x-4">
-          <img src="/logo.png" alt="Amsha Generation Logo" className="h-8 w-auto" />
-          <h2 className="font-extrabold text-2xl text-indigo-600">Amsha Generation</h2>
+          <img src="/icons/logo.png" alt="Amsha Generation Logo" className="h-8 w-auto" />
         </div>
+
 
         {/* Desktop Links only (visible on medium and larger screens) */}
         <ul className="hidden md:flex space-x-6 items-center">

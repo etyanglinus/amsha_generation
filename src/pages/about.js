@@ -4,20 +4,30 @@ const teamMembers = [
   {
     name: 'Samwel Kodilu',
     role: 'Founder and CEO',
-    bio: 'Samwel is passionate about financial literacy and empowering students to save.',
+    bio: 'Founder and CEO, passionate about financial literacy and empowering students to save and build wealth early.',
     linkedin: 'https://linkedin.com/in/samwelkodilu',
+    image: '/team/ceo.jpg',
   },
   {
-    name: 'Jane Doe',
-    role: 'Chief Technology Officer',
-    bio: 'Jane leads our tech initiatives and ensures our platform is user-friendly.',
-    linkedin: 'https://linkedin.com/in/janedoe',
+    name: 'Robert Aundo',
+    role: 'Chief Operating Officer',
+    bio: 'Chief Operating Officer, overseeing operations and helping structure organizational processes for success.',
+    linkedin: 'https://linkedin.com/in/robertaundo',
+    image: '/team/robertaundo.jpg',
   },
   {
-    name: 'John Smith',
+    name: 'Justin Omwenga',
     role: 'Chief Financial Officer',
-    bio: 'John manages our finances and ensures sustainability in our initiatives.',
-    linkedin: 'https://linkedin.com/in/johnsmith',
+    bio: 'Chief Financial Officer, responsible for financial planning and ensuring the organization\'s financial health.',
+    linkedin: 'https://linkedin.com/in/justinomwenga',
+    image: '/team/justinomwenga.jpg',
+  },
+  {
+    name: 'Andrew Kyosi',
+    role: 'Head of Corporate and Business Strategy',
+    bio: 'Head of Corporate and Business Strategy, focused on long-term strategic initiatives and partnerships.',
+    linkedin: 'https://linkedin.com/in/andrewkyosi',
+    image: '/team/andrewkyosi.jpg',
   },
 ];
 
