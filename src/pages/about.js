@@ -1,4 +1,4 @@
-import styles from './About.module.css'; // Ensure this file exists
+import styles from '../styles/About.module.css'; // Ensure this file exists
 
 const teamMembers = [
   {
