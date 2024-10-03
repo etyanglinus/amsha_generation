@@ -10,7 +10,7 @@ const DashboardIndex = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const currentBalance = 1000; // Replace with dynamic data
-  const goalProgress = 75; // Percentage
+  const goalProgress = 75; // Percentage for savings goal progress
 
   // Recent Transactions
   const recentTransactions = [
@@ -81,9 +81,10 @@ const DashboardIndex = () => {
   return (
     <DashboardLayout>
       <div className="overview">
-        <h2>Savings Overview</h2>
+        {/* Header: Welcome Message */}
+        <h2>Welcome back, [Username]!</h2>
 
-        {/* Current Balance */}
+        {/* Current Balance and Goal Progress */}
         <div className="balance">
           <h3>Current Balance: ${currentBalance}</h3>
           <div className="progress">
@@ -94,21 +95,24 @@ const DashboardIndex = () => {
           </div>
         </div>
 
-        {/* Savings Charts Section */}
+        {/* Quick Actions */}
+        <div className="quick-actions">
+          <button className="action-btn" onClick={() => setIsModalOpen(true)}>Deposit Funds</button>
+          <button className="action-btn">Create Savings Plan</button>
+          <button className="action-btn">Refer a Friend</button>
+          <button className="action-btn">Check Rewards</button>
+        </div>
+
+        {/* Charts: Savings by Category and Goal Progress */}
         <div className="charts-container">
-          {/* Savings by Category (Doughnut Chart) */}
           <div className="chart-section">
             <h3>Savings by Category</h3>
             <Doughnut data={categoryData} />
           </div>
-
-          {/* Savings Goal Progress (Doughnut Chart) */}
           <div className="chart-section">
             <h3>Savings Goal Progress</h3>
             <Doughnut data={goalProgressData} />
           </div>
-
-          {/* Savings Over Time (Bar Chart) */}
           <div className="chart-section">
             <h3>Savings Over Time</h3>
             <Bar data={savingsData} options={options} />
@@ -148,12 +152,9 @@ const DashboardIndex = () => {
           </div>
         </div>
 
-        {/* Add Funds Button */}
-        <button className="add-funds" onClick={() => setIsModalOpen(true)}>Add Funds</button>
+        {/* Deposit Modal */}
+        <DepositModal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} />
       </div>
-
-      {/* Deposit Modal */}
-      <DepositModal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} />
 
       {/* Styles */}
       <style jsx>{`
@@ -164,64 +165,57 @@ const DashboardIndex = () => {
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        h2, h3 {
-          margin-bottom: 20px;
+        h2, h3, h4 {
           color: #333;
         }
 
-        .balance {
+        .balance, .quick-actions, .charts-container, .maturity-section, .recent-transactions {
           margin-bottom: 20px;
-        }
-
-        .progress {
-          margin-top: 10px;
         }
 
         .progress-bar {
           background-color: #e0e0e0;
-          border-radius: 4px;
-          overflow: hidden;
           height: 20px;
+          border-radius: 5px;
+          margin-top: 10px;
+          overflow: hidden;
         }
 
         .progress-fill {
           background-color: #4caf50;
           height: 100%;
-          transition: width 0.3s;
+        }
+
+        .quick-actions {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .action-btn {
+          background-color: #0070f3;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        .action-btn:hover {
+          background-color: #005bb5;
         }
 
         .charts-container {
           display: flex;
           justify-content: space-between;
-          margin-bottom: 40px;
         }
 
         .chart-section {
           flex: 1;
           margin: 0 10px;
-          padding: 10px;
-          background-color: #f9f9f9;
-          border-radius: 8px;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .maturity-section {
-          margin: 20px 0;
-          padding: 10px;
-          background-color: #f9f9f9;
-          border-radius: 8px;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .recent-transactions {
-          margin: 20px 0;
         }
 
         .transactions-table {
-          margin-top: 20px;
-          border: 2px solid royalblue;
-          border-radius: 8px;
-          overflow: hidden;
+          margin-top: 10px;
         }
 
         table {
@@ -230,43 +224,17 @@ const DashboardIndex = () => {
         }
 
         th, td {
-          padding: 10px;
-          text-align: left;
+          padding: 8px;
           border-bottom: 1px solid #ddd;
         }
 
         th {
-          background-color: rgba(75, 192, 192, 0.6);
+          background-color: #0070f3;
           color: white;
         }
 
         tr:hover {
-          background-color: #f2f2f2;
-        }
-
-        .add-funds {
-          padding: 10px 20px;
-          background-color: #0070f3;
-          color: white;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-          margin-top: 20px;
-          transition: background-color 0.3s;
-        }
-
-        .add-funds:hover {
-          background-color: #005bb5;
-        }
-
-        @media (max-width: 768px) {
-          .charts-container {
-            flex-direction: column;
-          }
-
-          .chart-section {
-            margin: 10px 0;
-          }
+          background-color: #f1f1f1;
         }
       `}</style>
     </DashboardLayout>
