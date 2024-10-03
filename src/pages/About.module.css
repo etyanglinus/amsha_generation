@@ -1,0 +1,49 @@
+/* About.module.css */
+
+.about {
+  padding: 2rem;
+  background: linear-gradient(to left, #ffffff, #f0f0f0); /* Subtle background */
+}
+
+.teamSection {
+  margin-top: 2rem;
+}
+
+.teamCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.teamCard {
+  transition: transform 0.2s;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.teamCard:hover {
+  transform: scale(1.05);
+}
+
+.teamImage {
+  border: 2px solid #4169e1; /* Royal blue border */
+}
+
+.value-proposition {
+  margin-top: 2rem;
+}
+
+.statementContainer {
+  background-color: #4169e1; /* Royal blue */
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+.text-gray-600 {
+  color: #555;
+}
