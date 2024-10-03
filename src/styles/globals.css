@@ -1,4 +1,3 @@
-/* Global styles */
 * {
   margin: 0;
   padding: 0;
@@ -12,19 +11,41 @@ body {
   line-height: 1.6;
 }
 
+/* Navbar and footer styling */
 .navbar {
   background-color: royalblue;
   padding: 10px 0;
   color: white;
+  display: flex;
+  justify-content: space-between; /* This will space out the logo and the menu */
+  align-items: center; /* Vertically align the items */
 }
 
-.navbar a {
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-left: 20px;
+}
+
+.navbar ul {
+  display: flex; /* This makes the navbar items appear in a row */
+  list-style: none; /* Removes bullets from the list */
+  margin-right: 20px;
+}
+
+.navbar ul li {
+  margin-left: 20px; /* Adds space between the links */
+}
+
+.navbar ul li a {
   color: white;
   text-decoration: none;
-  margin: 0 15px;
+  font-size: 16px;
+  padding: 8px 16px;
 }
 
-.navbar a:hover {
+.navbar ul li a:hover {
   text-decoration: underline;
 }
 
