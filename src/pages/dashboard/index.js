@@ -1,23 +1,10 @@
-import React from 'react';
 import DashboardLayout from '../../components/DashboardLayout';
-import { Line, Bar, Pie } from 'react-chartjs-2';
+import { Bar, Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
 const HomePage = () => {
-  // Dynamic Greeting Based on Time of Day
-  const getGreeting = () => {
-    const hour = new Date().getHours();
-    if (hour < 12) return 'Good Morning';
-    if (hour < 18) return 'Good Afternoon';
-    return 'Good Evening';
-  };
-
-  const userName = 'Alex'; // You can get this dynamically from user data
-  
-  const greeting = `${getGreeting()}, ${userName}!`;
-
   // Savings Over Time (Bar Chart) Data
   const savingsData = {
     labels: ['January', 'February', 'March', 'April', 'May'],
@@ -25,142 +12,105 @@ const HomePage = () => {
       {
         label: 'Savings Over Time',
         data: [100, 200, 300, 400, 500],
-        borderColor: '#4CAF50',
         backgroundColor: 'rgba(76, 175, 80, 0.2)',
-        fill: true,
+        borderColor: '#4CAF50',
+        borderWidth: 1,
       },
     ],
   };
 
-  // Spending by Category (Pie Chart) Data
+  // Spending by Category (Doughnut Chart) Data
   const spendingData = {
     labels: ['Housing', 'Food', 'Transportation', 'Entertainment'],
     datasets: [
       {
         data: [300, 100, 50, 80],
         backgroundColor: ['#FF5733', '#4CAF50', '#FFC107', '#2196F3'],
+        borderWidth: 1,
       },
     ],
+  };
+
+  // Chart options to set the width and height
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
   };
 
   return (
     <DashboardLayout>
       <div className="home-page">
-        <header className="header">
-          <div className="greeting">
-            <h1>{greeting}</h1>
-            <img src="/path-to-avatar.jpg" alt="User Avatar" className="avatar" />
-          </div>
-          <div className="balance">
-            <h2>Account Balance</h2>
-            <p>Ksh 200,000</p>
-          </div>
-        </header>
-
-        <section className="quick-actions">
-          <div className="action-item">
-            <button>Deposit Funds</button>
-          </div>
-          <div className="action-item">
-            <button>Send Money</button>
-          </div>
-          <div className="action-item">
-            <button>Pay Bills</button>
-          </div>
-          <div className="action-item">
-            <button>View Goals</button>
-          </div>
-        </section>
+        <h1>Welcome to Your Dashboard</h1>
 
         <section className="financial-overview">
           <h2>Financial Overview</h2>
-          <div className="chart-container">
-            <h3>Savings Over Time</h3>
-            <Bar data={savingsData} />
-          </div>
 
-          <div className="chart-container">
-            <h3>Spending by Category</h3>
-            <Pie data={spendingData} />
+          <div className="charts-container">
+            {/* Savings Over Time Bar Chart */}
+            <div className="chart-wrapper">
+              <h3>Savings Over Time</h3>
+              <div className="chart" style={{ width: '200px', height: '200px' }}>
+                <Bar data={savingsData} options={chartOptions} />
+              </div>
+            </div>
+
+            {/* Spending by Category Doughnut Chart */}
+            <div className="chart-wrapper">
+              <h3>Spending by Category</h3>
+              <div className="chart" style={{ width: '200px', height: '200px' }}>
+                <Doughnut data={spendingData} options={chartOptions} />
+              </div>
+            </div>
           </div>
         </section>
 
         <style jsx>{`
           .home-page {
             padding: 20px;
-            font-family: Arial, sans-serif;
           }
 
-          .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #f0f0f0;
-          }
-
-          .greeting {
-            display: flex;
-            align-items: center;
-          }
-
-          .greeting h1 {
-            margin-right: 10px;
+          h1 {
             color: #333;
           }
 
-          .avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
+          section {
+            margin-bottom: 30px;
           }
 
-          .balance h2 {
-            font-size: 22px;
-            color: #333;
-          }
-
-          .balance p {
-            font-size: 24px;
-            color: #4CAF50;
-            font-weight: bold;
-          }
-
-          .quick-actions {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 30px;
-          }
-
-          .action-item button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-          }
-
-          .action-item button:hover {
-            background-color: #45a049;
-          }
-
-          .financial-overview h2 {
+          h2 {
             font-size: 28px;
             margin-bottom: 15px;
             color: #4CAF50;
           }
 
-          .chart-container {
-            margin-top: 20px;
-            margin-bottom: 30px;
-          }
-
           h3 {
             font-size: 22px;
             margin-bottom: 10px;
+          }
+
+          .charts-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .chart-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px;
+          }
+
+          .chart {
+            display: inline-block;
+          }
+
+          @media (max-width: 768px) {
+            .charts-container {
+              flex-direction: column;
+              align-items: flex-start;
+            }
           }
         `}</style>
       </div>
