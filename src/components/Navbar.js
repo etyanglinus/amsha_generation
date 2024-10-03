@@ -6,7 +6,11 @@ const Navbar = () => {
   return (
     <nav className="navbar fixed top-0 w-full bg-white shadow-lg z-10">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
-        <h2 className="font-extrabold text-2xl text-indigo-600">Amsha Generation</h2>
+        {/* Logo */}
+        <div className="flex items-center space-x-4">
+          <img src="/logo.png" alt="Amsha Generation Logo" className="h-8 w-auto" />
+          <h2 className="font-extrabold text-2xl text-indigo-600">Amsha Generation</h2>
+        </div>
 
         {/* Desktop Links only (visible on medium and larger screens) */}
         <ul className="hidden md:flex space-x-6 items-center">
