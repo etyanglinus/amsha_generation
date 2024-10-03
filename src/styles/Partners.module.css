@@ -1,0 +1,38 @@
+.partnersPage {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .partnersGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .partnerCard {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px royalblue;
+  }
+  
+  .partnerLogo {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .partnerName {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
