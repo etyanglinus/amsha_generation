@@ -1,14 +1,18 @@
 .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Adjust as needed */
-    background: linear-gradient(to left, white, royalblue);
-    padding: 20px; /* Optional padding */
-  }
-  
-  .content {
-    max-width: 800px; 
-    text-align: center;
-  }
-  
+  background: linear-gradient(to bottom, #4169e1, #ffffff); /* Royal blue to white */
+  padding: 3rem 0; /* Adjust padding as needed */
+}
+
+.text-left {
+  max-width: 50%; /* Optional: limit width for better layout */
+}
+
+.slideshow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-story {
+  text-align: center;
+}

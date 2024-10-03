@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from 'next/image'; // Import Image component from Next.js
 import Link from 'next/link'; // Import Link component
-import styles from './../styles/Hero.module.css';
+import { useEffect, useState } from "react";
+import styles from './../styles/Hero.module.css'; // Make sure you import the styles
 
 const Hero = () => {
   const [currentStory, setCurrentStory] = useState(0);
@@ -12,7 +12,7 @@ const Hero = () => {
     {
       name: "John Doe",
       caption: "Saved 10% of my income and paid off my student loans in 2 years.",
-      image: "/images/john.jpg", // Replace with your image path
+      image: "/images/john.jpg",
     },
     {
       name: "Jane Smith",
@@ -37,7 +37,7 @@ const Hero = () => {
   }, [successStories.length]);
 
   return (
-    <section className="hero bg-white py-12">
+    <section className={`${styles.hero} hero py-12`}>
       <div className="container mx-auto flex justify-between items-center">
         {/* Left Side: Mission Statement */}
         <div className="text-left">
