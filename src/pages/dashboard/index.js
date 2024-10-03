@@ -7,20 +7,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend,
 const HomePage = () => {
   // Savings Over Time (Bar Chart) Data
   const savingsData = {
-    labels: ['January', 'February', 'March', 'April', 'May'],/src/pages/dashboard/index.js
-Error: 
-  x Unterminated string constant
-    ,-[/vercel/path0/src/pages/dashboard/index.js:53:1]
- 53 | 
- 54 |   // Savings Over Time (Bar Chart) Data
- 55 |   const savingsData = {
- 56 |     labels: ['January', 'February', 'March', 'April', '
-    :                                                       ^
- 57 | const HomePage = () => {
- 58 |   return (
- 59 |     <DashboardLayout>
-    `----
-  x Expected ',', got 'const'
+    labels: ['January', 'February', 'March', 'April', 'May'],
     datasets: [
       {
         label: 'Savings Over Time',
