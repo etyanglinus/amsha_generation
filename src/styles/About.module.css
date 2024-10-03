@@ -1,6 +1,6 @@
 .about {
   padding: 2rem;
-  background: linear-gradient(to left, #ffffff, #f0f0f0); /* Subtle background */
+  background: linear-gradient(to right, #f0f0f0, #ffffff); /* Subtle background gradient */
 }
 
 .teamSection {
@@ -14,10 +14,12 @@
 }
 
 .teamCard {
-  transition: transform 0.2s;
-  background-color: white;
+  transition: transform 0.2s ease-in-out;
+  background-color: #fff;
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
 }
 
 .teamCard:hover {
@@ -26,23 +28,33 @@
 
 .teamImage {
   border: 2px solid #4169e1; /* Royal blue border */
-}
-
-.value-proposition {
-  margin-top: 2rem;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 1rem;
 }
 
 .statementContainer {
   background-color: #4169e1; /* Royal blue */
+  color: white;
   padding: 2rem;
   border-radius: 0.5rem;
+  text-align: center;
 }
 
-/* Apply global styles using :global */
-:global(h1, h2, h3) {
-  color: #333;
+h1, h2, h3 {
+  color: #333; /* Black color for headings */
 }
 
-.text-gray-600 {
-  color: #555;
+.bio {
+  color: #555; /* Dark grey for bio text */
+}
+
+.text-blue-500 {
+  color: #4169e1; /* Royal blue for LinkedIn links */
+}
+
+.text-center {
+  text-align: center;
 }
