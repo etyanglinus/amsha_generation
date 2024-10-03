@@ -1,12 +1,12 @@
-import { useRouter } from 'next/router'; // Importing Next.js router to check the current route
+import { useRouter } from 'next/router'; 
 import Navbar from './Navbar'; 
 import Footer from './Footer'; 
 
 const Layout = ({ children }) => {
   const router = useRouter();
 
-  // Check if the current page is the dashboard
-  const isDashboard = router.pathname === '/dashboard';
+  // Check if the current page is part of the dashboard (including sub-routes)
+  const isDashboard = router.pathname.startsWith('/dashboard');
 
   return (
     <div className="layout-container">
