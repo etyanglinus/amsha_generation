@@ -1,5 +1,5 @@
 .hero {
-  background: linear-gradient(to left, #ffffff, #4169e1); /* White to royal blue */
+  background: linear-gradient(to right, #ffffff, #4169e1); /* White to royal blue */
   padding: 3rem 0; /* Adjust padding as needed */
 }
 
