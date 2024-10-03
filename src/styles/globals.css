@@ -117,22 +117,29 @@ a:focus {
   text-decoration: underline;
 }
 
-/* Centered Form Styling (Login/Signup) */
-.centered-form {
+/* SignUp Page Styling */
+.signup-page {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
-  padding: 20px;
+  min-height: 100vh; /* Make sure the page takes up full height */
+  background-color: #f4f4f4; /* Light background */
 }
 
-.centered-form .form-container {
+.signup-form-container {
   background-color: white;
   padding: 30px;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px; /* Limit form width */
+  max-width: 400px; /* Limit the form width */
+}
+
+.signup-form-container h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 input,
@@ -145,6 +152,56 @@ button {
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 16px;
+}
+
+/* Glowing Effect for Input Fields */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none;
+  border-color: #4169E1;
+  box-shadow: 0 0 10px rgba(65, 105, 225, 0.5); /* Glowing effect */
+}
+
+/* Glowing Input Fields */
+input,
+textarea,
+select {
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+button {
+  background-color: #4169E1;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #3659b2;
+}
+
+/* Success Message Styling */
+.success-message {
+  color: #28a745; /* Green color for success */
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+/* Error Message Styling */
+.error-message {
+  color: #e74c3c; /* Red color for error */
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+/* Responsive Design for Form */
+@media (max-width: 768px) {
+  .signup-page {
+    padding: 15px;
+  }
 }
 
 /* Glowing Effect for Input Fields */
