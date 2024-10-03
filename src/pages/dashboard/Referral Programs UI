@@ -1,0 +1,82 @@
+import DashboardLayout from '../../components/DashboardLayout';
+
+const ReferralPrograms = () => {
+  return (
+    <DashboardLayout>
+      <div className="referral-programs">
+        <h2>Referral Programs</h2>
+
+        <section className="referral-overview">
+          <h3>Referral Overview</h3>
+          <p>Number of Referrals: 5</p>
+          <p>Pending Rewards: 2</p>
+          <p>Completed Rewards: 3</p>
+        </section>
+
+        <section className="referral-link">
+          <h3>Referral Link and Code</h3>
+          <p>Your referral code: <strong>ABC123</strong></p>
+          <button>Copy Referral Link</button>
+        </section>
+
+        <section className="earned-benefits">
+          <h3>Earned Benefits</h3>
+          <p>Cashback: $50</p>
+          <p>Points: 200</p>
+        </section>
+
+        <section className="leaderboard">
+          <h3>Referral Leaderboard</h3>
+          <ul>
+            <li>1. John Doe - 20 Referrals</li>
+            <li>2. Jane Smith - 15 Referrals</li>
+            <li>3. Alex Johnson - 10 Referrals</li>
+          </ul>
+        </section>
+      </div>
+
+      <style jsx>{`
+        .referral-programs {
+          padding: 20px;
+        }
+
+        h2 {
+          margin-bottom: 20px;
+          color: #333;
+        }
+
+        section {
+          margin-bottom: 30px;
+        }
+
+        h3 {
+          font-size: 22px;
+          margin-bottom: 15px;
+        }
+
+        button {
+          padding: 10px 20px;
+          background-color: #4caf50;
+          color: white;
+          border: none;
+          border-radius: 5px;
+        }
+
+        button:hover {
+          background-color: #45a049;
+        }
+
+        ul {
+          list-style: none;
+          padding-left: 0;
+        }
+
+        li {
+          margin-bottom: 10px;
+        }
+      `}</style>
+    </DashboardLayout>
+  );
+};
+
+export default ReferralPrograms;
