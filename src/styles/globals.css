@@ -1,24 +1,44 @@
+/* Resetting default styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Body Styling */
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f4;
   color: #333;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Navbar and footer styling */
+/* Global Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Navbar Styling */
 .navbar {
-  background-color: royalblue;
+  background-color: #4169E1; /* Royal Blue */
   padding: 10px 0;
   color: white;
   display: flex;
-  justify-content: space-between; /* This will space out the logo and the menu */
+  justify-content: space-between; /* Space out the logo and the menu */
   align-items: center; /* Vertically align the items */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
 }
 
 .navbar .logo {
@@ -29,13 +49,13 @@ body {
 }
 
 .navbar ul {
-  display: flex; /* This makes the navbar items appear in a row */
+  display: flex; /* Align navbar items in a row */
   list-style: none; /* Removes bullets from the list */
   margin-right: 20px;
 }
 
 .navbar ul li {
-  margin-left: 20px; /* Adds space between the links */
+  margin-left: 20px; /* Space between navbar links */
 }
 
 .navbar ul li a {
@@ -43,16 +63,156 @@ body {
   text-decoration: none;
   font-size: 16px;
   padding: 8px 16px;
+  transition: color 0.3s ease-in-out;
 }
 
 .navbar ul li a:hover {
-  text-decoration: underline;
+  color: #f4f4f4; /* Lighter color on hover */
 }
 
+/* Mobile Menu (for small screens) */
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none; /* Hide navbar items on small screens */
+  }
+
+  .navbar.mobile-menu ul {
+    display: block;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background-color: #4169E1;
+    padding: 10px;
+  }
+
+  .navbar.mobile-menu ul li {
+    margin: 10px 0;
+  }
+
+  .navbar.mobile-menu ul li a {
+    font-size: 18px;
+    padding: 10px;
+    color: white;
+  }
+}
+
+/* Footer Styling */
 .footer {
   background-color: black;
   color: white;
   text-align: center;
   padding: 20px 0;
   margin-top: 20px;
+}
+
+.footer a {
+  color: #4169E1; /* Link color */
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Container Styling */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Centered Form Styling */
+.centered-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.centered-form .form-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Form Input Fields */
+input,
+textarea,
+select,
+button {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none;
+  border-color: #4169E1;
+}
+
+button {
+  background-color: #4169E1;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #3659b2;
+}
+
+/* Success Message Styling */
+.success-message {
+  color: #28a745; /* Green color for success */
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+/* Error Message Styling */
+.error-message {
+  color: #e74c3c; /* Red color for error */
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+/* Utility Classes for Margin and Padding */
+.m-0 {
+  margin: 0;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Responsive Design for Different Screens */
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px; /* Account for the fixed navbar */
+  }
+
+  .container {
+    padding: 15px;
+  }
 }
