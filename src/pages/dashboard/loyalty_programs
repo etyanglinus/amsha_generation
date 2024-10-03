@@ -1,0 +1,75 @@
+import DashboardLayout from '../../components/DashboardLayout';
+
+const LoyaltyPrograms = () => {
+  return (
+    <DashboardLayout>
+      <div className="loyalty-programs">
+        <h2>Loyalty Programs</h2>
+
+        <section className="loyalty-points-summary">
+          <h3>Loyalty Points Summary</h3>
+          <p>Current Points: 1000</p>
+          <p>Milestone: Next reward at 1500 points</p>
+        </section>
+
+        <section className="point-earning-actions">
+          <h3>Point-Earning Actions</h3>
+          <ul>
+            <li>Save $100 - Earn 50 points</li>
+            <li>Attend Workshop - Earn 30 points</li>
+            <li>Complete Monthly Budget Goal - Earn 100 points</li>
+          </ul>
+        </section>
+
+        <section className="redeem-points">
+          <h3>Redeem Points</h3>
+          <button>Redeem for Cashback</button>
+          <button>Redeem for Gift Cards</button>
+        </section>
+      </div>
+
+      <style jsx>{`
+        .loyalty-programs {
+          padding: 20px;
+        }
+
+        h2 {
+          margin-bottom: 20px;
+          color: #333;
+        }
+
+        section {
+          margin-bottom: 30px;
+        }
+
+        h3 {
+          font-size: 22px;
+          margin-bottom: 15px;
+        }
+
+        button {
+          padding: 10px 20px;
+          background-color: #4caf50;
+          color: white;
+          border: none;
+          border-radius: 5px;
+        }
+
+        button:hover {
+          background-color: #45a049;
+        }
+
+        ul {
+          list-style: none;
+          padding-left: 0;
+        }
+
+        li {
+          margin-bottom: 10px;
+        }
+      `}</style>
+    </DashboardLayout>
+  );
+};
+
+export default LoyaltyPrograms;
