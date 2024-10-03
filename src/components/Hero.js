@@ -12,17 +12,17 @@ const Hero = () => {
     {
       name: "John Doe",
       caption: "Saved 10% of my income and paid off my student loans in 2 years.",
-      image: "/images/john.jpg",
+      image: "https://vanwinefest.ca/wp-content/uploads/bfi_thumb/profile-default-male-nyg4vc4i3m1d5pote7rfsv4o4c7p5ka5an0pselxcc-nyhjt6b1oifa23xq2ehfxoh9vink6vuxyns1y35vkc.png",
     },
     {
       name: "Jane Smith",
       caption: "Achieved financial freedom through strategic savings.",
-      image: "/images/jane.jpg",
+      image: "https://vanwinefest.ca/wp-content/uploads/bfi_thumb/profile-default-male-nyg4vc4i3m1d5pote7rfsv4o4c7p5ka5an0pselxcc-nyhjt6b1oifa23xq2ehfxoh9vink6vuxyns1y35vkc.png",
     },
     {
       name: "Michael Lee",
       caption: "Used Amsha Generation to reduce my debt and plan my future.",
-      image: "/images/michael.jpg",
+      image: "https://vanwinefest.ca/wp-content/uploads/bfi_thumb/profile-default-male-nyg4vc4i3m1d5pote7rfsv4o4c7p5ka5an0pselxcc-nyhjt6b1oifa23xq2ehfxoh9vink6vuxyns1y35vkc.png",
     },
   ];
 
