@@ -1,32 +1,56 @@
 import DashboardLayout from '../../components/DashboardLayout';
 import { useState } from 'react';
-import { Pie } from 'react-chartjs-2';
-import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale } from 'chart.js';
+import { Pie, Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale, BarElement, LinearScale } from 'chart.js';
 
-ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
+ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale, BarElement, LinearScale);
 
 const BudgetingTools = () => {
   const [expenses, setExpenses] = useState({
-    housing: 0,
-    food: 0,
-    transportation: 0,
-    entertainment: 0,
+    housing: 500,
+    food: 200,
+    transportation: 150,
+    entertainment: 100,
   });
 
   const handleExpenseChange = (category, value) => {
     setExpenses({ ...expenses, [category]: value });
   };
 
-  const categories = ['housing', 'food', 'transportation', 'entertainment'];
-  
-  // Pie chart data
+  // Pie chart data for spending distribution
   const chartData = {
-    labels: categories,
+    labels: ['Housing', 'Food', 'Transportation', 'Entertainment'],
     datasets: [
       {
-        label: 'Spending by Category',
-        data: categories.map(category => expenses[category]),
+        data: [expenses.housing, expenses.food, expenses.transportation, expenses.entertainment],
         backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0'],
+        hoverBackgroundColor: ['#ff437f', '#298ce0', '#ffb630', '#42b9a5'],
+      },
+    ],
+  };
+
+  // Bar chart data for monthly budget vs actual spending
+  const barChartData = {
+    labels: ['Housing', 'Food', 'Transportation', 'Entertainment'],
+    datasets: [
+      {
+        label: 'Budgeted',
+        data: [600, 250, 200, 150],
+        backgroundColor: '#4caf50',
+        borderColor: '#388e3c',
+        borderWidth: 1,
+      },
+      {
+        label: 'Actual',
+        data: [
+          expenses.housing,
+          expenses.food,
+          expenses.transportation,
+          expenses.entertainment,
+        ],
+        backgroundColor: '#ff9800',
+        borderColor: '#f57c00',
+        borderWidth: 1,
       },
     ],
   };
@@ -39,7 +63,7 @@ const BudgetingTools = () => {
         <section className="monthly-budget-overview">
           <h3>Monthly Budget Overview</h3>
           <div className="category-inputs">
-            {categories.map((category) => (
+            {['housing', 'food', 'transportation', 'entertainment'].map((category) => (
               <div key={category} className="category-input">
                 <label>{category.charAt(0).toUpperCase() + category.slice(1)}</label>
                 <input
@@ -50,6 +74,21 @@ const BudgetingTools = () => {
                 />
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="spending-insights">
+          <h3>Spending Insights</h3>
+          <div className="chart-container">
+            <div className="pie-chart">
+              <h4>Spending by Category (Pie Chart)</h4>
+              <Pie data={chartData} options={{ responsive: true }} />
+            </div>
+
+            <div className="bar-chart">
+              <h4>Budget vs Actual Spending (Bar Chart)</h4>
+              <Bar data={barChartData} options={{ responsive: true, scales: { y: { beginAtZero: true } } }} />
+            </div>
           </div>
         </section>
 
@@ -66,13 +105,6 @@ const BudgetingTools = () => {
             </div>
             <button type="submit">Add Expense</button>
           </form>
-        </section>
-
-        <section className="spending-insights">
-          <h3>Spending Insights</h3>
-          <div className="chart-container">
-            <Pie data={chartData} options={{ responsive: true }} />
-          </div>
         </section>
 
         <section className="budget-alerts">
@@ -96,6 +128,7 @@ const BudgetingTools = () => {
 
         h2 {
           margin-bottom: 20px;
+          color: #333;
         }
 
         .category-inputs {
@@ -106,6 +139,8 @@ const BudgetingTools = () => {
 
         .category-input label {
           font-size: 16px;
+          font-weight: 600;
+          color: #333;
         }
 
         .category-input input {
@@ -113,14 +148,17 @@ const BudgetingTools = () => {
           font-size: 14px;
           width: 100%;
           margin-top: 5px;
+          border-radius: 5px;
+          border: 1px solid #ddd;
         }
 
         .input-group {
-          margin-bottom: 10px;
+          margin-bottom: 20px;
         }
 
         .input-group label {
           font-size: 16px;
+          color: #333;
         }
 
         .input-group input {
@@ -128,6 +166,8 @@ const BudgetingTools = () => {
           font-size: 14px;
           width: 100%;
           margin-top: 5px;
+          border-radius: 5px;
+          border: 1px solid #ddd;
         }
 
         button {
@@ -138,6 +178,7 @@ const BudgetingTools = () => {
           border: none;
           border-radius: 5px;
           cursor: pointer;
+          margin-top: 10px;
         }
 
         button:hover {
@@ -145,18 +186,18 @@ const BudgetingTools = () => {
         }
 
         .chart-container {
-          width: 300px;
-          height: 300px;
-          margin-top: 20px;
-        }
-
-        .spending-insights,
-        .budget-alerts,
-        .recommended-actions {
+          display: flex;
+          justify-content: space-between;
           margin-top: 40px;
         }
 
+        .pie-chart,
+        .bar-chart {
+          width: 48%;
+        }
+
         .spending-insights h3,
+        .expense-tracker h3,
         .budget-alerts h3,
         .recommended-actions h3 {
           font-size: 20px;
@@ -170,8 +211,14 @@ const BudgetingTools = () => {
           }
 
           .chart-container {
-            width: 250px;
-            height: 250px;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .pie-chart,
+          .bar-chart {
+            width: 90%;
+            margin-bottom: 20px;
           }
         }
       `}</style>
