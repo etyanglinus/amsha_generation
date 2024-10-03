@@ -80,19 +80,6 @@ const Features = () => {
           ))}
         </div>
       </section>
-
-      {/* Partners Section */}
-      <section className={styles.partnersSection}>
-        <h2 className={styles.sectionTitle}>Our Partners</h2>
-        <div className={styles.partnersGrid}>
-          {partnersData.map((partner, index) => (
-            <div key={index} className={styles.partnerCard}>
-              <Image src={partner.logo} alt={partner.name} className={styles.partnerLogo} width={200} height={100} />
-              <p className={styles.partnerName}>{partner.name}</p>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   );
 };
